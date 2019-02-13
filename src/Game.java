@@ -4,6 +4,7 @@ public class Game {
 
     String[] guesses;
     String word;
+    String progress;
     int guessNumber;
 
     public Game() {
