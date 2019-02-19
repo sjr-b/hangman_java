@@ -21,17 +21,46 @@ public class Game {
         String builder = "";
         for (int a = 0; a < this.word.length(); a++){
             for (int b = 0; b < this.guesses.length; b++){
-                String test1 = check.substring(a, a+1);
                 if(check.substring(a, a+1).equals(this.guesses[b])){
                     builder += this.guesses[b];
                 }
             }
-            int test = builder.length();
             if (builder.length() - 1 != a){
-                builder += "_ ";
+                builder += "_";
             }
         }
         return builder;
+    }
+
+    public String continueOrNo(String result){
+        String message = "";
+        int endingGame = 9;
+        String wordTest = this.word;
+        if (result.equals(this.word)){
+            this.guessNumber = endingGame;
+            return "You won!";
+        } else if (this.guessNumber == endingGame) {
+            return "You lost! The word was " + this.word + ".";
+        }
+        return message;
+    }
+
+    public String addSpaces(String input){
+        String output = "";
+        String inputAdd = input + " ";
+        for (int c = 0; c < this.word.length(); c++){
+            output += inputAdd.substring(c, c+1) + " ";
+        }
+        return output;
+    }
+
+    public String repeatCheck(String input){
+        for (int a = 0; a < this.guesses.length; a++){
+            if (input.equals(this.guesses[a])){
+                return "You already guessed that letter.";
+            }
+        }
+        return "alright";
     }
 
     public String initialBlank(){
@@ -43,9 +72,7 @@ public class Game {
     }
 
     public int getGuessNumber() {
-
         return guessNumber;
-
     }
 
     // Scanner sc = new Scanner(System.in);
