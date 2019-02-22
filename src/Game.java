@@ -10,7 +10,7 @@ public class Game {
         String[] selection = {"apple", "pear", "banana"};
         int placement = new Random().nextInt(selection.length);
         this.word = selection[placement];
-        this.guesses = new String[word.length()];
+        this.guesses = new String[9];
         this.guessNumber = -1;
     }
 
@@ -34,12 +34,12 @@ public class Game {
 
     public String continueOrNo(String result){
         String message = "";
-        int endingGame = 9;
-        String wordTest = this.word;
+        int endingGame = 7;
         if (result.equals(this.word)){
             this.guessNumber = endingGame;
             return "You won!";
         } else if (this.guessNumber == endingGame) {
+            this.guessNumber = 10;
             return "You lost! The word was " + this.word + ".";
         }
         return message;
@@ -74,8 +74,5 @@ public class Game {
     public int getGuessNumber() {
         return guessNumber;
     }
-
-    // Scanner sc = new Scanner(System.in);
-    //System.out.println();
 
 }
